@@ -1,0 +1,77 @@
+﻿<Window x:Class="CofTeaPOSSystem.Windows.WindowEditSeries"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CofTeaPOSSystem.Windows"
+        xmlns:UserControls="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+        mc:Ignorable="d"
+        Title="WindowEditSeries" Height="440" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Grid Background="#DBC5B4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Height="25" Width="25" Content="X" FontWeight="Bold" BorderBrush="Transparent" HorizontalAlignment="Right" Background="Transparent" Click="Btn_Close_Click"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,5,0,0">
+            <TextBlock x:Name="tb_Header" Text="[series name]" 
+                       FontFamily="Arial Rounded MT Bold" 
+                       FontSize="20" 
+                       TextAlignment="Center" 
+                       TextWrapping="Wrap" 
+                       Width="350"/>
+            
+            <TextBlock x:Name="tb_description"
+                       Width="280"
+                       Text="You are editing a product series"
+                       FontFamily="Arial"
+                       FontSize="14"
+                       TextAlignment="Center"
+                       LineHeight="20"
+                       TextWrapping="Wrap" 
+                       Margin="0,15,0,0"/>
+
+            <TextBlock Text="Series Name" FontFamily="Arial Rounded MT Bold" FontSize="18" HorizontalAlignment="Center" Margin="0 40 150 10"/>
+
+            <UserControls:CustomTextBox x:Name="txt_name" 
+                                        Height="50"
+                                        Width="230"
+                                        C_tb_Text="Enter series name" 
+                                        C_txt_BorderBrush="#9C7C60"/>
+
+            <TextBlock Text="Series Index" FontFamily="Arial Rounded MT Bold" FontSize="18" HorizontalAlignment="Center" Margin="0 25 150 10"/>
+
+            <UserControls:CustomTextBox x:Name="txt_index" 
+                                        Height="50"
+                                        Width="230"
+                                        C_tb_Text="Enter series name" 
+                                        C_txt_BorderBrush="#9C7C60"
+                                        IsPreviewTextInput="txt_index_IsPreviewTextInput"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0">
+                <UserControls:CustomButton Width="120" 
+                                       Height="40"
+                                       C_btn_CornerRadius="20"
+                                       C_btn_Content="Delete Series"
+                                       C_btn_Background="#C82E25" 
+                                       C_btn_Foreground="#FFEDDB"
+                                       C_btn_HoverColor="#F4382D"
+                                       Margin="0 0 150 0"
+                                       IsClicked="Btn_DeleteSeries_Click"/>
+
+                <UserControls:CustomButton Width="120" 
+                                       Height="40"
+                                       C_btn_CornerRadius="20"
+                                       C_btn_Content="Update"
+                                       C_btn_Background="#9C7C60" 
+                                       C_btn_Foreground="#FEFEFE"
+                                       C_btn_HoverColor="#545454"
+                                       IsClicked="Btn_Update_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

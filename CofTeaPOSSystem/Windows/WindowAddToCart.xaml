@@ -1,0 +1,49 @@
+﻿<Window x:Class="CofTeaPOSSystem.Windows.WindowAddToCart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CofTeaPOSSystem.Windows"
+        xmlns:UserControls="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+        mc:Ignorable="d"
+        Title="WindowAddToCart" Height="400" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <Style x:Key="radio_payment" TargetType="RadioButton">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30 0 0 0"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Background="#DBC5B4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Height="25" Width="25" Content="X" FontWeight="Bold" BorderBrush="Transparent" HorizontalAlignment="Right" Background="Transparent" Click="Btn_Close_Click"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,5,0,0">
+            <TextBlock x:Name="tb_Header" Text="Add [item name]" FontFamily="Arial Rounded MT Bold" FontSize="20" TextAlignment="Center"/>
+            <TextBlock x:Name="tb_description" Width="280" Text="You are adding an item to cart" FontFamily="Arial" FontSize="14" TextAlignment="Center" LineHeight="20" TextWrapping="Wrap" Margin="0,15,0,0"/>
+
+            <StackPanel x:Name="panel_cupSize"> 
+                <TextBlock x:Name="tb_price" Text="Cup Size" FontFamily="Arial Rounded MT Bold" FontSize="18" HorizontalAlignment="Center" Margin="0 40 0 20"/>
+
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Width="375">
+                    <StackPanel x:Name="panel_cups" Orientation="Horizontal" HorizontalAlignment="Center" Loaded="panel_cups_Loaded">
+                        <RadioButton GroupName="cupsize" Content="(₱59) 16oz" Style="{StaticResource radio_payment}"/>
+                        <RadioButton GroupName="cupsize" Content="(₱59) 16oz" Style="{StaticResource radio_payment}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+
+            <TextBlock Text="Amount" FontFamily="Arial Rounded MT Bold" FontSize="18" HorizontalAlignment="Center" Margin="0 35 0 15"/>
+            <UserControls:CustomTextBox x:Name="txt_amount" Height="40" Width="175" C_txt_FontSize="14" C_txt_CornerRadius="15" C_txt_BorderBrush="#9C7C60" C_tb_Text="" IsPreviewTextInput="txt_amount_IsPreviewTextInput"/>
+
+            <UserControls:CustomButton Width="125" Height="45" C_btn_Background="#9C7C60" C_btn_Content="Submit" C_btn_Foreground="#FEFEFE" C_btn_CornerRadius="20" C_btn_HoverColor="#545454" Margin="0 35 0 0" IsClicked="Btn_Submit_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

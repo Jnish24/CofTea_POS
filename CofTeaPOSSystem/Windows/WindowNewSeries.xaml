@@ -1,0 +1,55 @@
+﻿<Window x:Class="CofTeaPOSSystem.Windows.WindowNewSeries"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CofTeaPOSSystem.Windows"
+        xmlns:UserControls="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+        mc:Ignorable="d"
+        Title="WindowNewSeries" Height="510" Width="550" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <Style x:Key="radio_category" TargetType="RadioButton">
+            <Setter Property="FontFamily" Value="Arial "/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="#5F432C"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="50 0 0 0" />
+        </Style>
+
+        <Style x:Key="txt_subheader" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,30,0,10"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Background="#DBC5B4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="325*"/>
+        </Grid.RowDefinitions>
+
+        <Button Height="25" Width="25" Content="X" FontWeight="Bold" BorderBrush="Transparent" HorizontalAlignment="Right" Background="Transparent" Click="Btn_Close_Click"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <TextBlock x:Name="tb_Header" Text="New Product Series" FontFamily="Arial Rounded MT Bold" FontSize="18" TextAlignment="Center"/>
+            <TextBlock x:Name="tb_Description" Width="280" Text="You are creating a new series for a product set" FontFamily="Arial" FontSize="14" TextAlignment="Center" LineHeight="20" TextWrapping="Wrap" Margin="0,15,0,0"/>
+
+            <TextBlock Text="Series Name" Style="{StaticResource txt_subheader}"/>
+            <UserControls:CustomTextBox x:Name="txt_seriesName" Width="350" Height="45" C_txt_FontSize="14" C_tb_Text="Enter series name" C_txt_BorderBrush="#9C7C60"/>
+
+            <TextBlock Text="Series Index" Style="{StaticResource txt_subheader}"/>
+            <UserControls:CustomTextBox x:Name="txt_index" Width="350" Height="45" C_txt_FontSize="14" C_tb_Text="Enter series index" C_txt_BorderBrush="#9C7C60" IsPreviewTextInput="txt_index_IsPreviewTextInput"/>
+
+            <TextBlock Text="Product Type" Style="{StaticResource txt_subheader}"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="radio_beverage" GroupName="category" Content="Beverage" Style="{StaticResource radio_category}"/>
+                <RadioButton x:Name="radio_standard" GroupName="category" Content="Standard Item" Style="{StaticResource radio_category}"/>
+            </StackPanel>
+
+            <UserControls:CustomButton Width="125" Height="45" C_btn_Background="#9C7C60" C_btn_Content="Submit" C_btn_Foreground="#FEFEFE" C_btn_HoverColor="#545454" Margin="0,30,0,0" IsClicked="Btn_Submit_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="CofTeaPOSSystem.Resources.UserControls.WindowAddProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+             xmlns:UserControls="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="608" d:DesignWidth="1080">
+
+    <UserControl.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="ColumnWidth" Value="*"/>
+
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Vertical"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#B6B2B2"/>
+            <Setter Property="AlternationCount" Value="2"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#F1DBC4" />
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FFEDDB" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F1DBC4"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+        </Style>
+
+        <Style x:Key="header_radio" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#5F432C"/>
+            <Setter Property="Margin" Value="10 10 50 0" />
+        </Style>
+
+        <Style x:Key="radio_category" TargetType="RadioButton">
+            <Setter Property="FontFamily" Value="Arial "/>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="#5F432C"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="40 25 0 0" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#9C7C60">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="1" Text="Manage Menu" Foreground="#FFEDDB" FontSize="36" FontFamily="Arial Rounded MT Bold" HorizontalAlignment="Left" Margin="0 25 0 0"/>
+        <TextBlock Grid.Column="1" x:Name="tb_user" Text="Welcome, User" Foreground="#FFEDDB" FontSize="24" FontFamily="Arial Rounded MT Bold" HorizontalAlignment="Right" Margin="0 35 0 0"/>
+        <Rectangle Grid.Column="1" Height="2" Fill="#FFEDDB" Margin="0 25 0 0"/>
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 2">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFEDDB"/>
+
+            <TextBlock Text="Select product type to manage:" Style="{StaticResource header_radio}"/>
+            <!--<UserControls:CustomTextBox Width="200"
+                                        Height="45"
+                                        C_txt_CornerRadius="20"
+                                        C_txt_Foreground="#5F432C"
+                                        C_tb_Text="Search"
+                                        C_txt_BorderBrush="#9C7C60"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 200 0"/>-->
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <RadioButton x:Name="radio_series" GroupName="category" Content="Product Series" Style="{StaticResource radio_category}" Checked="Radio_Series_Checked"/>
+                <RadioButton x:Name="radio_item" GroupName="category" Content="Product Item" Style="{StaticResource radio_category}" Checked="Radio_Series_Checked"/>
+                <RadioButton x:Name="radio_cup" GroupName="category" Content="Cup Size" Style="{StaticResource radio_category}" Checked="Radio_Series_Checked"/>
+                <RadioButton x:Name="radio_price" GroupName="category" Content="Pricing" Style="{StaticResource radio_category}" Checked="Radio_Series_Checked"/>
+            </StackPanel>
+
+            <UserControls:CustomButton x:Name="btn_create"
+                                       Width="150"
+                                       Height="40"
+                                       C_btn_Content="Create Category"
+                                       C_btn_Foreground="#5F432C"
+                                       C_btn_Background="#D1A782"
+                                       C_btn_CornerRadius="15"
+                                       HorizontalAlignment="Right"
+                                       IsClicked="btn_create_IsClicked"
+                                       Margin="0 0 25 0"/>
+        </Grid>
+
+        <DataGrid Grid.Column="1" Grid.Row="2" x:Name="abcd" AutoGenerateColumns="True" HeadersVisibility="Column" MouseDoubleClick="Datagrid_EditRow_MouseDoubleClick" AutoGeneratingColumn="abcd_AutoGeneratingColumn"/>
+
+        <!--<StackPanel Grid.Row="1" Grid.Column="1">
+            
+            <TextBlock Text="Select product type to add:" Style="{StaticResource header_radio}"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <RadioButton GroupName="category" Content="Product Category" Style="{StaticResource radio_category}"/>
+                <RadioButton GroupName="category" Content="Product Item" Style="{StaticResource radio_category}"/>
+                <RadioButton GroupName="category" Content="Cup Size" Style="{StaticResource radio_category}"/>
+            </StackPanel>
+        </StackPanel>-->
+
+        <!--<Grid Grid.Row="2" Grid.Column="1" x:Name="form_Canvas">
+            <Rectangle Fill="#D1A782" RadiusX="25" RadiusY="25"/>
+
+            <ScrollViewer Margin="25" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <UserControls:SubWindowProductCategory/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>-->
+
+    </Grid>
+</UserControl>

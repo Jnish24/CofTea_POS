@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CofTeaDB.db" />
+    <None Remove="Resources\Images\CofTeaLogo.png" />
+    <None Remove="Resources\Images\CofTeaLogoTrans.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CofTeaDB.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\CofTeaLogo.png" />
+    <Resource Include="Resources\Images\CofTeaLogoTrans.png" />
+  </ItemGroup>
+
+</Project>

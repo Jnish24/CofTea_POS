@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="CofTeaPOSSystem.Resources.UserControls.WindowManageAccounts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+             xmlns:UserControls="clr-namespace:CofTeaPOSSystem.Resources.UserControls"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="608" d:DesignWidth="1080">
+    
+    <UserControl.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="ColumnWidth" Value="*"/>
+
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="SelectionUnit" Value="FullRow"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Vertical"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#B6B2B2"/>
+            <Setter Property="AlternationCount" Value="2"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#F1DBC4" />
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FFEDDB" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F1DBC4"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5 0 0 0"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#9C7C60">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="1" Text="Manage Accounts" Foreground="#FFEDDB" FontSize="36" FontFamily="Arial Rounded MT Bold" HorizontalAlignment="Left" Margin="0 25 0 0"/>
+        <TextBlock Grid.Column="1" x:Name="tb_user" Text="Welcome, User" Foreground="#FFEDDB" FontSize="24" FontFamily="Arial Rounded MT Bold" HorizontalAlignment="Right" Margin="0 35 0 0"/>
+        <Rectangle Grid.Column="1" Height="2" Fill="#FFEDDB" Margin="0 25 0 0"/>
+
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 2">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFEDDB"/>
+            <UserControls:CustomButton Width="150" Height="40" C_btn_Content="Create new user" C_btn_Foreground="#5F432C" C_btn_Background="#D1A782" C_btn_CornerRadius="15" HorizontalAlignment="Right" IsClicked="Btn_NewUser_Click" Margin="0 0 25 0"/>
+        </Grid>
+        
+
+        <DataGrid Grid.Column="1" Grid.Row="2" x:Name="abcd" AutoGenerateColumns="False" HeadersVisibility="Column" MouseDoubleClick="Datagrid_EditRow_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="*"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding First Name}" Width="*"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding Last Name}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Contact Number" Binding="{Binding Contact Number}" Width="*"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}" Width="*"/>
+                <DataGridTextColumn Header="Date Registered" Binding="{Binding Date Registered}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

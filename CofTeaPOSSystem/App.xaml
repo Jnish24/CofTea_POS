@@ -1,0 +1,10 @@
+﻿<Application x:Class="CofTeaPOSSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CofTeaPOSSystem"
+             StartupUri="LoginWindow.xaml"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
